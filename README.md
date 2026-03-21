@@ -47,6 +47,15 @@ python manage.py migrate
 python manage.py runserver
 ```
 
+### 5. Run and Access the admin
+```
+python manage.py createsuperuser
+```
+ open your web browser and go to
+```
+http://127.0.0.1:8000/admin/
+```
+
 
 ## CRUD Functionality
 ### Create
