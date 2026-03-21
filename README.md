@@ -51,20 +51,28 @@ python manage.py runserver
 ## CRUD Functionality
 ### Create
 - Add user
-![Create User](images/add_user.png)
+
+<img src="images/add_user.png" width="500">
+
 - Add song
-![Create Song](images/add_song.png)
+
+<img src="images/add_song.png" width="500">
+
 - Add library
-![Create Library](images/add_library.png)
+
+<img src="images/add_library.png" width="500">
 
 ### Read
 - View song list
-![Song List](images/song_list.png)
+
+<img src="images/song_list.png" width="500">
 
 ### Update
 - Edit song details
-![Update song detail](images/change_song_detail.png)
+
+<img src="images/change_song_detail.png" width="500">
 
 ### Delete
 - Delete song
-![Delete Song](images/after_delete_song.png)
+
+<img src="images/after_delete_song.png" width="500">
