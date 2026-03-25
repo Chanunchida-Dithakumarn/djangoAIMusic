@@ -43,6 +43,7 @@ class Library(models.Model):
     name = models.CharField(max_length=200)
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='libraries')
+    is_default = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -58,7 +59,7 @@ class Song(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='songs')
-    library = models.ForeignKey(Library, on_delete=models.CASCADE, related_name='songs')
+    library = models.ForeignKey(Library, on_delete=models.SET_NULL, null=True, blank=True, related_name='songs')
 
     def __str__(self):
         return self.title
