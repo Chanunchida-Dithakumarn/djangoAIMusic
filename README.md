@@ -6,8 +6,11 @@ The system focuses on the domain layer, including users, songs, and libraries,
 as well as database persistence and CRUD operations.
 
 
-## Domain Model
+## Domain Model Diagram
 
+<img src="images/domain2.png" width="500">
+
+## Domain Model
 ### Core Domain Entities
 - **User**: Represents a user who can create songs and manage libraries.
 - **Song**: Represents a generated song.
@@ -85,3 +88,9 @@ http://127.0.0.1:8000/admin/
 - Delete song
 
 <img src="images/after_delete_song.png" width="500">
+
+
+## Documents
+- [SRS Document](https://docs.google.com/document/d/1jZ_DPozzjafzBFzR-hXG-twCKDTnJYvVNKApg5Cq4FY/edit?tab=t.0)
+
+- [Domain Model Design](https://docs.google.com/document/d/1_vNSHfFB2oyrRuoh96gXLbgVbxj5A7FCda2S8cLuRoM/edit?tab=t.0#heading=h.rj03wl3cevi1)
