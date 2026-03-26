@@ -42,21 +42,22 @@ pip install django
 
 ### 3. Run Migrations
 ```
+python manage.py makemigrations
 python manage.py migrate
 ```
 
-### 4. Run Server
-```
-python manage.py runserver
-```
-
-### 5. Run and Access the admin
+### 4. Run and Access the admin
 ```
 python manage.py createsuperuser
 ```
  open your web browser and go to
 ```
 http://127.0.0.1:8000/admin/
+```
+
+### 5. Run Server
+```
+python manage.py runserver
 ```
 
 
