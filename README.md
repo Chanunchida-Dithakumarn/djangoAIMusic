@@ -35,6 +35,14 @@ git clone https://github.com/Chanunchida-Dithakumarn/djangoAIMusic.git
 cd djangoAIMusic
 ```
 
+### 2. Setup Environment
+```
+python -m venv env
+
+source env/bin/activate   # Mac/Linux
+env\Scripts\activate      # Windows
+```
+
 ### 2. Install Dependencies
 ```
 pip install django
