@@ -54,7 +54,20 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-### 4. Run and Access the admin
+### 4. Configuration (Strategy Pattern / API Keys)
+```
+# Choose the strategy: 'mock' or 'suno'
+
+# mock
+GENERATOR_STRATEGY = 'mock'
+SUNO_API_KEY = ''
+
+# suno
+GENERATOR_STRATEGY = 'suno'
+SUNO_API_KEY = 'YOUR_API_KEY'
+```
+
+### 5. Run and Access the admin
 ```
 python manage.py createsuperuser
 ```
@@ -63,9 +76,35 @@ python manage.py createsuperuser
 http://127.0.0.1:8000/admin/
 ```
 
-### 5. Run Server
+### 6. Run Server
 ```
 python manage.py runserver
+```
+
+
+# Testing
+### Test Mock Mode
+1. Ensure GENERATOR_STRATEGY = 'mock' is set
+2. Run `python manage.py shell`
+3. Run this in the shell.
+```
+from music.services.strategy import get_song_generator
+generator = get_song_generator()
+result = generator.generate({'title': 'Mock Song', 'genre': 'Pop', 'lyrics': 'Song'})
+print(result)
+generator.check_status('Your task_id result')
+```
+
+### Test Suno API Mode
+1. Ensure GENERATOR_STRATEGY = 'suno' and SUNO_API_KEY are set.
+2. Run `python manage.py shell`
+3. Run this in the shell.
+```
+from music.services.strategy import get_song_generator
+generator = get_song_generator()
+result = generator.generate({'title': 'Real Song', 'genre': 'Pop', 'lyrics': 'Testing Song'})
+print(result)
+generator.check_status('Your task_id result')
 ```
 
 

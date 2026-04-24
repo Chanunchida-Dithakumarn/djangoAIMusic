@@ -116,3 +116,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+
+import os
+
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
+GENERATOR_STRATEGY = os.getenv('GENERATOR_STRATEGY', 'mock')
+SUNO_API_KEY = os.getenv('SUNO_API_KEY', '')

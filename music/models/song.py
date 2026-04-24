@@ -14,6 +14,10 @@ class Song(models.Model):
     cover_image = models.URLField(blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
 
+    # -------- for API --------
+    task_id = models.CharField(max_length=255, blank=True, null=True)
+    song_url = models.URLField(blank=True, null=True)
+
     user = models.ForeignKey('music.User', on_delete=models.CASCADE, related_name='songs')
     library = models.ForeignKey('music.Library', on_delete=models.SET_NULL, null=True, blank=True, related_name='songs')
 
