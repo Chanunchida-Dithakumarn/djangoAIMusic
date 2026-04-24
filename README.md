@@ -102,7 +102,7 @@ generator.check_status('Your task_id result')
 
 The result:
 
-<img src="images/testing_mock.png" width="600">
+<img src="images/testing_mock.png" width="700">
 
 ### Test Suno API Mode
 1. Ensure GENERATOR_STRATEGY = 'suno' and SUNO_API_KEY are set.
@@ -122,7 +122,7 @@ generator.check_status('Your task_id result')
 
 The result:
 
-<img src="images/testing_suno.png" width="600">
+<img src="images/testing_suno.png" width="700">
 
 
 ## CRUD Functionality
