@@ -55,6 +55,7 @@ python manage.py migrate
 ```
 
 ### 4. Configuration (Strategy Pattern / API Keys)
+Put it in your `.env` file
 ```
 # Choose the strategy: 'mock' or 'suno'
 
@@ -89,11 +90,19 @@ python manage.py runserver
 3. Run this in the shell.
 ```
 from music.services.strategy import get_song_generator
+
 generator = get_song_generator()
+
 result = generator.generate({'title': 'Mock Song', 'genre': 'Pop', 'lyrics': 'Song'})
+
 print(result)
+
 generator.check_status('Your task_id result')
 ```
+
+The result:
+
+<img src="images/testing_mock.png" width="600">
 
 ### Test Suno API Mode
 1. Ensure GENERATOR_STRATEGY = 'suno' and SUNO_API_KEY are set.
@@ -101,11 +110,19 @@ generator.check_status('Your task_id result')
 3. Run this in the shell.
 ```
 from music.services.strategy import get_song_generator
+
 generator = get_song_generator()
-result = generator.generate({'title': 'Real Song', 'genre': 'Pop', 'lyrics': 'Testing Song'})
+
+result = generator.generate({'title': 'API Song', 'genre': 'Pop', 'lyrics': 'Hello'})
+
 print(result)
+
 generator.check_status('Your task_id result')
 ```
+
+The result:
+
+<img src="images/testing_suno.png" width="600">
 
 
 ## CRUD Functionality
