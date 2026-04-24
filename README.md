@@ -122,6 +122,8 @@ generator.check_status('Your task_id result')
 
 The result:
 
+status "SUCCESS" is mapped to "Completed"
+
 <img src="images/testing_suno.png" width="700">
 
 

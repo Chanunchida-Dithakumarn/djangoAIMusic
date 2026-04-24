@@ -103,10 +103,15 @@ class SunoSongGenerator(SongGenerator):
 
             if suno_data and isinstance(suno_data, list):
                 song_url = suno_data[0].get("audioUrl", "")
-                
+
+            if api_status == "SUCCESS":
+                status = "Completed"
+            else:
+                status = api_status
+
             return {
                 "task_id": task_id,
-                "status": api_status,
+                "status": status,
                 "song_url": song_url
             }
         except requests.exceptions.RequestException as e:
