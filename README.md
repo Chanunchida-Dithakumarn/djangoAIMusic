@@ -106,7 +106,7 @@ For generate a song: `http://127.0.0.1:8000/create/`
 
     <img src="images/suno_result.png" width="400">
 
-    <img src="images/suno_shell.png" width="500">
+    <img src="images/suno_shell.png" width="600">
 
 
 <br>
