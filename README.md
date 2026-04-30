@@ -94,13 +94,11 @@ For generate a song: `http://127.0.0.1:8000/create/`
 - **Mock testing:** ensure GENERATOR_STRATEGY = 'mock' is set
 - **Suno testing:** ensure GENERATOR_STRATEGY = 'suno' is set
 
-<br>
 
 - Type song config and press generate song
 
     <img src="images/mock_config.png" width="300">
 
-<br>
 
 - The result: (Web Interface for Testing)
 
