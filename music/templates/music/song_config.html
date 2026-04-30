@@ -4,66 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Song Configuration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .config-card { max-width: 600px; margin: 50px auto; border-radius: 15px; border: none; }
+        .btn-generate { background: linear-gradient(45deg, #0d6efd, #6610f2); border: none; padding: 12px; }
+        .btn-generate:hover { opacity: 0.9; transform: translateY(-1px); }
+    </style>
 </head>
 <body>
-    <h2>AI Song Configuration</h2>
-    
-    <form method="POST" action="{% url 'generate_song' %}">
-        
-        {% csrf_token %}
-        
-        <p>
-            <label for="title">Song Title:</label><br>
-            <input type="text" id="title" name="title" placeholder="e.g. Happy Birthday" required>
-        </p>
-        
-        <p>
-            <label for="genre">Music Genre:</label><br>
-            <select id="genre" name="genre" required>
-                <option value="" disabled selected>-- Select a genre --</option>
-                <option value="pop">Pop</option>
-                <option value="rock">Rock</option>
-                <option value="jazz">Jazz</option>
-                <option value="classical">Classical</option>
-                <option value="hiphop">Hip Hop</option>
-                <option value="rnb">R&B</option>
-            </select>
-        </p>
 
-        <p>
-            <label for="mood">Song Mood:</label><br>
-            <select id="mood" name="mood" required>
-                <option value="" disabled selected>-- Select a mood --</option>
-                <option value="happy">Happy</option>
-                <option value="sad">Sad</option>
-                <option value="romantic">Romantic</option>
-                <option value="relaxed">Relaxed</option>
-                <option value="energetic">Energetic</option>
-                <option value="calm">Calm</option>
-                <option value="angry">Angry</option>
-            </select>
-        </p>
+<div class="container">
+    <div class="card config-card shadow-lg p-4 p-md-5">
+        <h2 class="text-center mb-4 fw-bold text-dark">🎵 AI Song Configuration</h2>
+        <p class="text-center text-muted mb-4">Customize your AI-generated music project below.</p>
+        
+        <form method="POST" action="{% url 'generate_song' %}">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="title" class="form-label fw-semibold">Song Title</label>
+                <input type="text" class="form-control form-control-lg" id="title" name="title" 
+                       placeholder="e.g. Happy Birthday" required>
+            </div>
 
-        <p>
-            <label for="visibility">Visibility:</label><br>
-            <select id="visibility" name="visibility">
-                <option value="private" selected>Private</option>
-                <option value="public">Public</option>
-            </select>
-        </p>
-        
-        <p>
-            <label for="additional">Additional Details:</label><br>
-            <textarea id="additional" name="additional" rows="6" cols="50" placeholder="e.g. A song about rainy day with male singer."></textarea>
-        </p>
-        
-        <button type="submit" style="padding: 10px 20px; cursor: pointer;">
-            Generate Song
-        </button>
-        
-    </form>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="genre" class="form-label fw-semibold">Music Genre</label>
+                    <select class="form-select" id="genre" name="genre" required>
+                        <option value="" disabled selected>-- Select genre --</option>
+                        <option value="pop">Pop</option>
+                        <option value="rock">Rock</option>
+                        <option value="jazz">Jazz</option>
+                        <option value="classical">Classical</option>
+                        <option value="hiphop">Hip Hop</option>
+                        <option value="rnb">R&B</option>
+                    </select>
+                </div>
 
-    <br>
-    <a href="{% url 'generate_song' %}">Reset Form</a>
+                <div class="col-md-6 mb-3">
+                    <label for="mood" class="form-label fw-semibold">Song Mood</label>
+                    <select class="form-select" id="mood" name="mood" required>
+                        <option value="" disabled selected>-- Select mood --</option>
+                        <option value="happy">Happy</option>
+                        <option value="sad">Sad</option>
+                        <option value="romantic">Romantic</option>
+                        <option value="relaxed">Relaxed</option>
+                        <option value="energetic">Energetic</option>
+                        <option value="calm">Calm</option>
+                        <option value="angry">Angry</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="visibility" class="form-label fw-semibold">Visibility Settings</label>
+                <select class="form-select" id="visibility" name="visibility">
+                    <option value="private" selected>🔒 Private</option>
+                    <option value="public">🌐 Public</option>
+                </select>
+            </div>
+            
+            <div class="mb-4">
+                <label for="additional" class="form-label fw-semibold">Additional Details</label>
+                <textarea class="form-control" id="additional" name="additional" rows="4" 
+                          placeholder="Describe the song style or paste your lyrics here..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-generate w-100 fw-bold fs-5 shadow-sm">
+                Generate Song
+            </button>
+            
+        </form>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'generate_song' %}" class="text-decoration-none text-muted small">
+                ↺ Reset Form
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

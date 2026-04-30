@@ -97,12 +97,17 @@ For generate a song: `http://127.0.0.1:8000/create/`
 
 - Type song config and press generate song
 
-    <img src="images/mock_config.png" width="300">
+    <img src="images/suno_config.png" width="400">
+
+    <img src="images/suno_wait.png" width="400">
 
 
-- The result: (Web Interface for Testing)
+- The result:
 
-    <img src="images/mock_result.png" width="250">
+    <img src="images/suno_result.png" width="400">
+
+    <img src="images/suno_shell.png" width="500">
+
 
 <br>
 
