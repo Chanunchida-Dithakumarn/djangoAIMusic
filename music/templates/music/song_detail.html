@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Detail - {{ song.title }}</title>
+    
+    {% if song.status == "Pending" %}
+        <meta http-equiv="refresh" content="30">
+    {% endif %}
+</head>
+<body>
+    <h2>Song: {{ song.title }}</h2>
+    <hr>
+
+    <p><strong>Status:</strong> {{ song.status }}</p>
+    <p><strong>Genre:</strong> {{ song.genre }}</p>
+    <p><strong>Mood:</strong> {{ song.mood }}</p>
+
+    <p><strong>Additional Details:</strong><br>
+    {{ song.additional|default:"No details provided" }}</p>
+
+    <hr>
+
+    {% if song.status == "Completed" %}
+        <h3>Listen to your song:</h3>
+        <audio controls>
+            <source src="{{ song.song_url }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <br><br>
+        <a href="{{ song.song_url }}" target="_blank">Download MP3</a>
+    {% else %}
+        <p>AI is processing your request...</p>
+    {% endif %}
+
+    <br><br><br>
+    <a href="{% url 'generate_song' %}">Create New Song</a>
+</body>
+</html>

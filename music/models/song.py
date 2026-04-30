@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 from .mood import Mood
 from .genre import Genre
@@ -13,12 +14,14 @@ class Song(models.Model):
     status = models.CharField(max_length=50, choices=Status.choices, default=Status.PENDING)
     cover_image = models.URLField(blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
+    additional = models.TextField(blank=True, null=True)
 
     # -------- for API --------
     task_id = models.CharField(max_length=255, blank=True, null=True)
     song_url = models.URLField(blank=True, null=True)
 
-    user = models.ForeignKey('music.User', on_delete=models.CASCADE, related_name='songs')
+    # user = models.ForeignKey('music.User', on_delete=models.CASCADE, related_name='songs')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='songs')
     library = models.ForeignKey('music.Library', on_delete=models.SET_NULL, null=True, blank=True, related_name='songs')
 
     def __str__(self):

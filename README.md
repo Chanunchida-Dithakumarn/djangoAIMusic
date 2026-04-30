@@ -81,9 +81,36 @@ http://127.0.0.1:8000/admin/
 ```
 python manage.py runserver
 ```
+Open your web browser and go to
+
+For admin: `http://127.0.0.1:8000/admin/`
+
+For generate a song: `http://127.0.0.1:8000/create/`
 
 
 # Testing
+
+### Testing in both 'mock' and 'suno'
+- **Mock testing:** ensure GENERATOR_STRATEGY = 'mock' is set
+- **Suno testing:** ensure GENERATOR_STRATEGY = 'suno' is set
+
+<br>
+
+- Type song config and press generate song
+
+    <img src="images/mock_config.png" width="300">
+
+<br>
+
+- The result: (Web Interface for Testing)
+
+    <img src="images/mock_result.png" width="250">
+
+<br>
+
+<details>
+<summary><b>Testing via shell</b></summary>
+
 ### Test Mock Mode
 1. Ensure GENERATOR_STRATEGY = 'mock' is set
 2. Run `python manage.py shell`
@@ -126,6 +153,8 @@ status "SUCCESS" is mapped to "Completed"
 
 <img src="images/testing_suno.png" width="700">
 
+</details>
+<br>
 
 ## CRUD Functionality
 ### Create

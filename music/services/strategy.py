@@ -48,9 +48,9 @@ class SunoSongGenerator(SongGenerator):
         url = f"{self.base_url}/generate"
         
         payload = {
-            "prompt": song_data.get('lyrics', ''),
+            "prompt": song_data.get('additional', ''),
             "title": song_data.get('title', 'Untitled Song'),
-            "tags": song_data.get('genre', 'Pop'),
+            "tags": f"{song_data.get('genre', 'Pop')}, {song_data.get('mood', '')}",
             "customMode": True,
             "instrumental": False,
             "model": "V4_5ALL",
@@ -80,6 +80,9 @@ class SunoSongGenerator(SongGenerator):
             return {"task_id": None, "status": "Failed"}
 
     def check_status(self, task_id: str) -> dict:
+        if not task_id:
+            return {"task_id": task_id, "status": "Failed", "song_url": ""}
+
         print(f"[Suno] - Checking status for task_id: {task_id}")
         url = f"{self.base_url}/generate/record-info"
         
@@ -93,19 +96,21 @@ class SunoSongGenerator(SongGenerator):
             full_data = response.json()
             # print("DEBUG FULL RESPONSE:", full_data)
 
-            data = full_data.get("data", {})
+            data = full_data.get("data") or {}
             
             api_status = data.get("status", "Pending")
 
             song_url = ""
-            response_data = data.get("response", {})
-            suno_data = response_data.get("sunoData", [])
+            response_data = data.get("response") or {}
+            suno_data = response_data.get("sunoData") or []
 
             if suno_data and isinstance(suno_data, list):
                 song_url = suno_data[0].get("audioUrl", "")
 
             if api_status == "SUCCESS":
                 status = "Completed"
+            elif api_status in ["FAIL", "FAILED", "ERROR"]:
+                status = "Failed"
             else:
                 status = api_status
 
